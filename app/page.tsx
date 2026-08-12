@@ -1,0 +1,28 @@
+import Hero from "../components/home/Hero";
+import Scripture from "../components/home/Scripture";
+import Pillars from "../components/home/Pillars";
+import Welcome from "../components/home/Welcome";
+import Features from "@/components/home/Features";
+import FeaturedCourses from "@/components/home/FeaturedCourses";
+import Community from "@/components/home/Community";
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-[#faf8f2]text-gray-900">
+      
+      {/* Hero Section */}
+      <Hero />
+      <main className="bg-[#f3ead7]">
+        {/* Three Pillars */}
+     <Pillars />
+     <Welcome />
+      <Features />
+      <Community />
+      </main>
+    
+
+      {/* Footer */}
+    
+    </main>
+  );
+}
