@@ -8,7 +8,7 @@ import Community from "@/components/home/Community";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#faf8f2]text-gray-900">
+    <main className="min-h-screen bg-[#faf8f2] text-gray-900">
       
       {/* Hero Section */}
       <Hero />

@@ -11,28 +11,28 @@ const platforms = [
     icon: FaFacebookF,
     color: "bg-blue-600",
     description: "Follow our page for updates, encouragement and teachings.",
-    link: "facebook.com/authenticbiblelearning",
+    link: "https://www.facebook.com/share/1DVwxkTtDy/",
   },
   {
     name: "Substack",
     icon: FaRss,
     color: "bg-orange-500",
     description: "Read our articles and Bible studies on Substack.",
-    link: "authenticbiblelearning.substack.com",
+    link: "https://open.substack.com/pub/eshcol/p/adam-and-eve-and-the-human-instinct?utm_source=share&utm_medium=android&r=8f70gp",
   },
   {
     name: "YouTube",
     icon: FaYoutube,
     color: "bg-red-600",
     description: "Watch our teachings and discussions.",
-    link: "youtube.com/@authenticbiblelearning",
+    link: "https://youtube.com/@authenticbiblelearning",
   },
   {
     name: "WhatsApp",
     icon: FaWhatsapp,
     color: "bg-green-500",
-    description: "Join our WhatsApp broadcast for ministry updates.",
-    link: "+254 700 000 000",
+    description: "Join our WhatsApp channel for ministry updates.",
+    link: "https://whatsapp.com/channel/0029Vb84hadKWEL046VazN3j",
   },
 ];
 
@@ -41,6 +41,7 @@ export default function ConnectWithUs() {
     <div className="h-full rounded-xl border border-gray-200 bg-[#FDFCF8] p-5">
       <div className="flex items-center gap-2 mb-5">
         <span className="text-[#294638] text-xl">♧</span>
+
         <h2 className="text-lg font-semibold text-[#294638]">
           CONNECT WITH US
         </h2>
@@ -51,7 +52,13 @@ export default function ConnectWithUs() {
           const Icon = platform.icon;
 
           return (
-            <div key={platform.name} className="flex gap-3">
+            <a
+              key={platform.name}
+              href={platform.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-3 rounded-lg transition hover:bg-gray-50"
+            >
               <div
                 className={`w-9 h-9 shrink-0 rounded-full ${platform.color} flex items-center justify-center`}
               >
@@ -67,11 +74,11 @@ export default function ConnectWithUs() {
                   {platform.description}
                 </p>
 
-                <p className="text-[10px] text-gray-700 mt-0.5">
+                <p className="text-[10px] text-gray-700 mt-0.5 break-all">
                   {platform.link}
                 </p>
               </div>
-            </div>
+            </a>
           );
         })}
       </div>

@@ -8,13 +8,13 @@ import { FaBars, FaXmark } from "react-icons/fa6";
 const links = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Our Approach to Learning", href: "/learning-approach" },
+  { name: "Our Approach to Learning", href: "/approach" },
   { name: "Courses & Training", href: "/courses" },
-  { name: "Creation's Notebook", href: "/creations-notebook" },
-  { name: "Teaching Gallery", href: "/teaching-gallery" },
-  { name: "Articles & Resources", href: "/articles-resources" },
+  { name: "Creation's Notebook", href: "/notebook" },
+  { name: "Teaching Gallery", href: "/gallery" },
+  { name: "Articles & Resources", href: "/resources" },
   { name: "Events", href: "/events" },
-  { name: "Support the Ministry", href: "/support-the-ministry" },
+  { name: "Support the Ministry", href: "/support" },
   { name: "Contact Us", href: "/contact" },
 ];
 

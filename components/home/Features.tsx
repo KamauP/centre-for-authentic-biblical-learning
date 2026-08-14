@@ -3,7 +3,7 @@ import FeatureCard from "@/components/shared/FeatureCard";
 export default function Features() {
   const features = [
     {
-      image: "/images/notebook.jpg",
+      image: "/images/home/notebook.jpg",
       title: "Creation's Notebook",
       description:
         "Discover spiritual lessons God reveals through His creation.",
@@ -11,7 +11,7 @@ export default function Features() {
       href: "/notebook",
     },
     {
-      image: "/images/gallery.jpg",
+      image: "/images/home/gallery.jpg",
       title: "Teaching Gallery",
       description:
         "Biblical illustrations that teach, challenge and transform.",
@@ -19,7 +19,7 @@ export default function Features() {
       href: "/gallery",
     },
     {
-      image: "/images/courses.jpg",
+      image: "/images/home/courses.jpg",
       title: "Courses & Training",
       description:
         "Equipping believers through Bible studies, seminars and courses.",
@@ -27,7 +27,7 @@ export default function Features() {
       href: "/courses",
     },
     {
-      image: "/images/resources.jpg",
+      image: "/images/home/resources.jpg",
       title: "Articles & Resources",
       description:
         "In-depth articles, study notes and resources for your growth.",

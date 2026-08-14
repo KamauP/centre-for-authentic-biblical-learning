@@ -52,21 +52,37 @@ export default function Footer() {
 
             <div className="flex gap-4 text-lg mb-6">
 
-              <a href="#">
-                <FaFacebookF className="hover:text-yellow-300 transition" />
-              </a>
+                        <a
+            href="https://www.facebook.com/share/1DVwxkTtDy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <FaFacebookF className="hover:text-yellow-300 transition" />
+          </a>
 
-              <a href="#">
-                <FaYoutube className="hover:text-yellow-300 transition" />
-              </a>
+          <a
+            href="#"
+            aria-label="YouTube"
+          >
+            <FaYoutube className="hover:text-yellow-300 transition" />
+          </a>
 
-              <a href="#">
-                <FaWhatsapp className="hover:text-yellow-300 transition" />
-              </a>
+          <a
+            href="https://whatsapp.com/channel/0029Vb84hadKWEL046VazN3j"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+          >
+            <FaWhatsapp className="hover:text-yellow-300 transition" />
+          </a>
 
-              <a href="#">
-                <FaEnvelope className="hover:text-yellow-300 transition" />
-              </a>
+          <a
+            href="/contact"
+            aria-label="Contact Us"
+          >
+            <FaEnvelope className="hover:text-yellow-300 transition" />
+          </a>
 
             </div>
 
@@ -80,7 +96,7 @@ export default function Footer() {
               Quick Links
             </h3>
  <li>
-                <Link href="/page" className="hover:text-yellow-300">
+                <Link href="/" className="hover:text-yellow-300">
                   Home
                 </Link>
               </li>
@@ -165,7 +181,7 @@ export default function Footer() {
                 <FaMapMarkerAlt className="text-yellow-300 mt-1 shrink-0" />
 
                 <div>
-                  <p>P.O. Box 0000-00100</p>
+                  <p>--</p>
                   <p>Nairobi, Kenya</p>
                 </div>
 
@@ -175,7 +191,7 @@ export default function Footer() {
 
                 <FaPhoneAlt className="text-yellow-300 shrink-0" />
 
-                <p>+254 723210474</p>
+                <p>+254 792382202</p>
 
               </div>
 
@@ -183,7 +199,7 @@ export default function Footer() {
 
                 <FaEnvelope className="text-yellow-300 shrink-0" />
 
-                <p>info@authenticbiblelearning.org</p>
+                <p>--</p>
 
               </div>
 
@@ -191,7 +207,7 @@ export default function Footer() {
 
                 <FaGlobe className="text-yellow-300 shrink-0" />
 
-                <p>www.authenticbiblelearning.org</p>
+                <p>--</p>
 
               </div>
 

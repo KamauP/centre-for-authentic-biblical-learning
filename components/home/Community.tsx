@@ -23,23 +23,23 @@ export default function Community() {
 
           <div className="space-y-3">
             <TeachingCard
-              image="/images/teaching1.jpg"
+              image="/images/home/teaching1.jpg"
               title="The Sower and the Seed"
-              date="July 20, 2025"
+              date=""
               href="/gallery"
             />
 
             <TeachingCard
-              image="/images/teaching2.jpg"
+              image="/images/home/teaching2.jpg"
               title="Balaam and the Donkey"
-              date="July 18, 2025"
+              date=""
               href="/gallery"
             />
 
             <TeachingCard
-              image="/images/teaching3.jpg"
+              image="/images/home/teaching3.jpg"
               title="Elijah Taken Up"
-              date="July 15, 2025"
+              date=""
               href="/gallery"
             />
           </div>

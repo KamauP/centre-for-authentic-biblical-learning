@@ -10,7 +10,7 @@ export default function Welcome() {
           {/* Left Image */}
           <div className="relative h-[320px] rounded-lg overflow-hidden shadow-md">
             <Image
-              src="/images/welcome.jpg"
+              src="/images/home/welcome.jpg"
               alt="Bible Study"
               fill
               className="object-cover"

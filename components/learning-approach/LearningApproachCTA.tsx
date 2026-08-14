@@ -53,7 +53,7 @@ export default function LearningApproachCTA() {
                   </Link>
 
                   <Link
-                    href="/teaching-gallery"
+                    href="/gallery"
                     className="inline-flex items-center gap-2 rounded-md border border-white/50 px-4 py-2 text-[10px] font-bold text-white transition hover:bg-white/10"
                   >
                     EXPLORE TEACHINGS

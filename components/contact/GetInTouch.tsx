@@ -9,25 +9,25 @@ const contactDetails = [
   {
     icon: FaPhone,
     title: "Ministry Phone",
-    value: "+254 724210474",
+    value: "+254 792382202",
     description: "We're happy to speak with you.",
   },
   {
     icon: FaEnvelope,
     title: "Email Address",
-    value: "info@authenticbiblelearning.org",
+    value: "--",
     description: "We aim to respond within 24 hours.",
   },
   {
     icon: FaLocationDot,
     title: "Ministry Location",
-    value: "P.O. Box 0000-00100\nNairobi, Kenya",
+    value: "--\nNairobi, Kenya",
     description: "Our teachings reach across Kenya and beyond.",
   },
   {
     icon: FaGlobe,
     title: "Website",
-    value: "www.authenticbiblelearning.org",
+    value: "--",
     description: "Visit our website for resources and updates.",
   },
 ];

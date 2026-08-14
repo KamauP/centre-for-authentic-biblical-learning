@@ -42,7 +42,7 @@ export default function CreationNotebookCTA() {
               </div>
 
               <Link
-                href="/articles"
+                href="/resources"
                 className="inline-flex shrink-0 items-center gap-2 rounded-md bg-[#E5A900] px-4 py-2 text-[10px] font-bold text-white transition hover:bg-[#D49A00]"
               >
                 KEEP EXPLORING
