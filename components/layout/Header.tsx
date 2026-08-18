@@ -40,7 +40,7 @@ export default function Header() {
           <FaYoutube className="hover:text-yellow-400 transition" />
         </a>*/}
         <a
-  href="https://open.substack.com/pub/eshcol/p/adam-and-eve-and-the-human-instinct?utm_source=share&utm_medium=android&r=8f70gp"
+  href="https://substack.com/@cable905894?utm_source=share&utm_medium=android&r=8f70gp"
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Substack"

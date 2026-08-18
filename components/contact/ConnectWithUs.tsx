@@ -19,7 +19,7 @@ const platforms = [
     icon: SiSubstack ,
     color: "bg-orange-500",
     description: "Read our articles and Bible studies on Substack.",
-    link: "https://open.substack.com/pub/eshcol/p/adam-and-eve-and-the-human-instinct?utm_source=share&utm_medium=android&r=8f70gp",
+    link: "https://substack.com/@cable905894?utm_source=share&utm_medium=android&r=8f70gp",
   },
   {
     name: "YouTube",
