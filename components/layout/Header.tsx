@@ -7,7 +7,9 @@ import {
   FaYoutube,
   FaWhatsapp,
   FaEnvelope,
+  FaRss,
 } from "react-icons/fa";
+import { SiSubstack } from "react-icons/si";
 
 export default function Header() {
   return (
@@ -31,12 +33,20 @@ export default function Header() {
           <FaFacebookF className="hover:text-yellow-400 transition" />
         </a>
 
-        <a
+      {/*<a
           href="#"
           aria-label="YouTube"
         >
           <FaYoutube className="hover:text-yellow-400 transition" />
-        </a>
+        </a>*/}
+        <a
+  href="https://open.substack.com/pub/eshcol/p/adam-and-eve-and-the-human-instinct?utm_source=share&utm_medium=android&r=8f70gp"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Substack"
+>
+<SiSubstack className="hover:text-yellow-400 transition" />
+</a>
 
         <a
           href="https://whatsapp.com/channel/0029Vb84hadKWEL046VazN3j"

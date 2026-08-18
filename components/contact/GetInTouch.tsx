@@ -12,7 +12,7 @@ const contactDetails = [
     value: "+254 792382202",
     description: "We're happy to speak with you.",
   },
-  {
+ /* {
     icon: FaEnvelope,
     title: "Email Address",
     value: "--",
@@ -23,11 +23,11 @@ const contactDetails = [
     title: "Ministry Location",
     value: "--\nNairobi, Kenya",
     description: "Our teachings reach across Kenya and beyond.",
-  },
+  },*/
   {
     icon: FaGlobe,
     title: "Website",
-    value: "--",
+    value: "www.centerforauthenticbiblicallearning.org",
     description: "Visit our website for resources and updates.",
   },
 ];

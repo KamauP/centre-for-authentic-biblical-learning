@@ -9,7 +9,9 @@ import {
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaGlobe,
-} from "react-icons/fa";
+  FaRss,
+  } from "react-icons/fa";
+  import { SiSubstack } from "react-icons/si";
 
 export default function Footer() {
   return (
@@ -52,41 +54,50 @@ export default function Footer() {
 
             <div className="flex gap-4 text-lg mb-6">
 
-                        <a
-            href="https://www.facebook.com/share/1DVwxkTtDy/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <FaFacebookF className="hover:text-yellow-300 transition" />
-          </a>
+              <a
+                href="https://www.facebook.com/share/1DVwxkTtDy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FaFacebookF className="hover:text-yellow-300 transition" />
+              </a>
 
-          <a
-            href="#"
-            aria-label="YouTube"
-          >
-            <FaYoutube className="hover:text-yellow-300 transition" />
-          </a>
+              {/*  <a
+                href="#"
+                aria-label="YouTube"
+              >
+                <FaYoutube className="hover:text-yellow-300 transition" />
+              </a>*/}
 
-          <a
-            href="https://whatsapp.com/channel/0029Vb84hadKWEL046VazN3j"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-          >
-            <FaWhatsapp className="hover:text-yellow-300 transition" />
-          </a>
+              <a
+                href="https://open.substack.com/pub/eshcol/p/adam-and-eve-and-the-human-instinct?utm_source=share&utm_medium=android&r=8f70gp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Substack"
+              >
+               <SiSubstack className="hover:text-yellow-400 transition" />
+              </a>
 
-          <a
-            href="/contact"
-            aria-label="Contact Us"
-          >
-            <FaEnvelope className="hover:text-yellow-300 transition" />
-          </a>
+              <a
+                href="https://whatsapp.com/channel/0029Vb84hadKWEL046VazN3j"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp className="hover:text-yellow-300 transition" />
+              </a>
+
+              <a
+                href="/contact"
+                aria-label="Contact Us"
+              >
+                <FaEnvelope className="hover:text-yellow-300 transition" />
+              </a>
 
             </div>
 
-         </div>
+          </div>
 
           {/* Quick Links */}
 
@@ -95,32 +106,36 @@ export default function Footer() {
             <h3 className="text-base font-semibold text-yellow-300 mb-4">
               Quick Links
             </h3>
- <li>
-                <Link href="/" className="hover:text-yellow-300">
-                  Home
-                </Link>
-              </li>
-               <li>
-                <Link href="/about" className="hover:text-yellow-300">
-                  About Us
-                </Link>
-              </li>
-               <li>
-                <Link href="/approach" className="hover:text-yellow-300">
-                  Our Approach to learning
-                </Link>
-              </li>
-             
+
             <li>
-                <Link href="/support" className="hover:text-yellow-300">
-                  Support the Ministry
-                </Link>
-              </li>
-                            <li>
-                <Link href="/contact" className="hover:text-yellow-300">
-                  Contact Us
-                </Link>
-              </li>
+              <Link href="/" className="hover:text-yellow-300">
+                Home
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/about" className="hover:text-yellow-300">
+                About Us
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/approach" className="hover:text-yellow-300">
+                Our Approach to learning
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/support" className="hover:text-yellow-300">
+                Support the Ministry
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/contact" className="hover:text-yellow-300">
+                Contact Us
+              </Link>
+            </li>
 
           </div>
 
@@ -145,22 +160,24 @@ export default function Footer() {
                   Events
                 </Link>
               </li>
-                            <li>
+
+              <li>
                 <Link href="/courses" className="hover:text-yellow-300">
                   Courses & Training
                 </Link>
               </li>
-                <li>
+
+              <li>
                 <Link href="/notebook" className="hover:text-yellow-300">
                   Creation's Notebook
                 </Link>
               </li>
-                <li>
+
+              <li>
                 <Link href="/gallery" className="hover:text-yellow-300">
                   Teaching Gallery
                 </Link>
               </li>
- 
 
             </ul>
 
@@ -168,7 +185,7 @@ export default function Footer() {
 
           {/* Contact */}
 
-          <div>
+          <div className="min-w-0">
 
             <h3 className="text-base font-semibold text-yellow-300 mb-4">
               Contact Us
@@ -176,7 +193,7 @@ export default function Footer() {
 
             <div className="space-y-3 text-sm text-gray-200">
 
-              <div className="flex gap-3">
+              {/*  <div className="flex gap-3">
 
                 <FaMapMarkerAlt className="text-yellow-300 mt-1 shrink-0" />
 
@@ -185,7 +202,7 @@ export default function Footer() {
                   <p>Nairobi, Kenya</p>
                 </div>
 
-              </div>
+              </div>*/}
 
               <div className="flex items-center gap-3">
 
@@ -195,19 +212,21 @@ export default function Footer() {
 
               </div>
 
-              <div className="flex items-center gap-3">
+              {/*  <div className="flex items-center gap-3">
 
                 <FaEnvelope className="text-yellow-300 shrink-0" />
 
                 <p>--</p>
 
-              </div>
+              </div>*/}
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3 min-w-0">
 
-                <FaGlobe className="text-yellow-300 shrink-0" />
+                <FaGlobe className="text-yellow-300 shrink-0 mt-1" />
 
-                <p>--</p>
+                <p className="min-w-0 break-words text-sm">
+                  www.centerforauthenticbiblicallearning.org
+                </p>
 
               </div>
 
@@ -217,7 +236,7 @@ export default function Footer() {
 
           {/* Scripture */}
 
-          <div>
+          <div className="min-w-0">
 
             <h3 className="text-base font-semibold text-yellow-300 mb-4">
               Scripture Foundation
@@ -238,15 +257,17 @@ export default function Footer() {
         </div>
 
       </div>
-<div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-2 text-sm bg-green-950 py-1">
-  <p className="text-center md:text-left text-gray-300">
-    © 2025 Centre for Authentic Biblical Learning. All Rights Reserved.
-  </p>
 
-  <p className="text-center md:text-right text-yellow-300 font-semibold">
-    To God be the Glory!
-  </p>
-</div>
+      <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-2 text-sm bg-green-950 py-1">
+        <p className="text-center md:text-left text-gray-300">
+          © 2025 Centre for Authentic Biblical Learning. All Rights Reserved.
+        </p>
+
+        <p className="text-center md:text-right text-yellow-300 font-semibold">
+          To God be the Glory!
+        </p>
+      </div>
+
     </footer>
   );
 }

@@ -4,6 +4,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa6";
 import { FaRss } from "react-icons/fa";
+import { SiSubstack } from "react-icons/si";
 
 const platforms = [
   {
@@ -15,7 +16,7 @@ const platforms = [
   },
   {
     name: "Substack",
-    icon: FaRss,
+    icon: SiSubstack ,
     color: "bg-orange-500",
     description: "Read our articles and Bible studies on Substack.",
     link: "https://open.substack.com/pub/eshcol/p/adam-and-eve-and-the-human-instinct?utm_source=share&utm_medium=android&r=8f70gp",
