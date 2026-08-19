@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Centre for Authentic Biblical Learning",
+  title: "Center for Authentic Biblical Learning",
   description:
     "Igniting a Passion for the Authentic Knowledge of God's Word",
 };
