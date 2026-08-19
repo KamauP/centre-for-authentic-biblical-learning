@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <main>
 <PageHero
-        title="About the Centre for Authentic Biblical Learning"
+        title="About the Center for Authentic Biblical Learning"
         description="Equipping believers. Enlightening minds. Empowering lives. Advancing God's Kingdom."
         image="/images/about/about-hero.jpg"
       />

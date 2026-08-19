@@ -18,7 +18,7 @@ export default function WhyWeExist() {
               <p className="text-sm text-gray-700 leading-5">
                 Jesus said, &quot;My people are destroyed for lack of
                 knowledge...&quot; (Hosea 4:6). Ignorance of God&apos;s Word
-                leads to spiritual weakness, confusion and defeat. The Centre
+                leads to spiritual weakness, confusion and defeat. The Center
                 for Authentic Biblical Learning exists to change that story by
                 equipping believers of all ages with the tools, understanding
                 and confidence to study the Scriptures diligently, discover

@@ -88,7 +88,7 @@ export default function Header() {
 
             <div className="leading-tight">
               <p className="text-[11px] uppercase tracking-wide text-gray-700">
-                CENTRE FOR
+                CENTER FOR
               </p>
 
               <h2 className="text-[17px] font-bold text-green-900 leading-none">

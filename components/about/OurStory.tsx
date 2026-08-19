@@ -21,7 +21,7 @@ export default function OurStory() {
 
             <div className="space-y-2 text-gray-700 text-sm leading-5">
               <p>
-                The Centre for Authentic Biblical Learning was birthed out of
+                The Center for Authentic Biblical Learning was birthed out of
                 a deep burden to see God&apos;s people grow in the knowledge of
                 His Word.
               </p>

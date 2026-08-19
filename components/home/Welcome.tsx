@@ -20,7 +20,7 @@ export default function Welcome() {
           {/* Right Content */}
           <div>
             <h2 className="text-3xl font-bold text-green-900 leading-tight mb-4">
-              Welcome to the Centre for
+              Welcome to the Center for
               <br />
               Authentic Biblical Learning
             </h2>
