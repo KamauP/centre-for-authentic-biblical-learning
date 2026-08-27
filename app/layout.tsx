@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -16,9 +15,45 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Center for Authentic Biblical Learning",
+  metadataBase: new URL(
+    "https://centerforauthenticbiblicallearning.org"
+  ),
+
+  title: {
+    default: "Center for Authentic Biblical Learning",
+    template: "%s | Center for Authentic Biblical Learning",
+  },
+
   description:
-    "Igniting a Passion for the Authentic Knowledge of God's Word",
+    "Center for Authentic Biblical Learning is a Christian ministry organization in Kenya focused on biblical learning, biblical teaching, Bible study, and Christian education.",
+
+  applicationName: "Center for Authentic Biblical Learning",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: "Center for Authentic Biblical Learning",
+    description:
+      "A Christian ministry organization in Kenya focused on biblical learning, biblical teaching, Bible study, and Christian education.",
+    url: "https://centerforauthenticbiblicallearning.org",
+    siteName: "Center for Authentic Biblical Learning",
+    locale: "en_KE",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Center for Authentic Biblical Learning",
+    description:
+      "Biblical learning, biblical teaching, Bible study, and Christian education in Kenya.",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -31,17 +66,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-     <body className="min-h-full flex flex-col bg-amber-50">
+      <body className="min-h-full flex flex-col bg-amber-50">
+        <Header />
 
-  <Header />
+        <main className="flex-1">
+          {children}
+        </main>
 
-  <main className="flex-1">
-    {children}
-  </main>
-
-  <Footer />
-
-</body>
+        <Footer />
+      </body>
     </html>
   );
 }

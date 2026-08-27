@@ -260,7 +260,7 @@ export default function Footer() {
 
       <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-2 text-sm bg-green-950 py-1">
         <p className="text-center md:text-left text-gray-300">
-          © 2025 Center for Authentic Biblical Learning. All Rights Reserved.
+          © 2026 Center for Authentic Biblical Learning. All Rights Reserved.
         </p>
 
         <p className="text-center md:text-right text-yellow-300 font-semibold">
