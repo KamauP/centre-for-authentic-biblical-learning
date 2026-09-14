@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -53,7 +52,7 @@ export default function HomepagePage() {
 
   async function handleDelete(slide: HeroSlide) {
     const confirmed = window.confirm(
-      `Are you sure you want to delete "${slide.title}"?`
+      `Are you sure you want to delete "${slide.title}" from the homepage?\n\nThe teaching will remain in the Creations Notebook.`
     );
 
     if (!confirmed) return;
@@ -61,16 +60,9 @@ export default function HomepagePage() {
     setDeletingId(slide.id);
 
     try {
-      if (slide.image_url) {
-        const { error: imageError } = await supabase.storage
-          .from("hero-images")
-          .remove([slide.image_url]);
-
-        if (imageError) {
-          console.error("Image delete error:", imageError);
-        }
-      }
-
+      // Delete only the Hero Slide.
+      // Do NOT delete the image from Storage because
+      // the Creations Notebook may still be using it.
       const { error } = await supabase
         .from("hero_slides")
         .delete()
@@ -81,6 +73,9 @@ export default function HomepagePage() {
         alert("Could not delete the slide.");
         return;
       }
+
+      // Because creations.hero_slide_id uses ON DELETE SET NULL,
+      // the linked Creation remains safely in the Notebook.
 
       setSlides((currentSlides) =>
         currentSlides.filter((item) => item.id !== slide.id)
@@ -303,3 +298,4 @@ export default function HomepagePage() {
     </div>
   );
 }
+

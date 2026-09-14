@@ -8,8 +8,10 @@ type HeroSlide = {
   title: string;
   description: string | null;
   reference: string | null;
-  imageUrl: string;
+  imageUrl: string | null;
 };
+
+const DEFAULT_HERO_IMAGE = "/images/home/home-hero.jpg";
 
 function truncateText(text: string | null, maxLength: number) {
   if (!text) return "";
@@ -37,39 +39,43 @@ export default function HeroSlider({
 
   const slide = slides[currentSlide];
 
+  // Use the uploaded image if available.
+  // Otherwise use the default CABL hero image.
+  const backgroundImage = slide.imageUrl || DEFAULT_HERO_IMAGE;
+
   return (
     <section
       className="relative h-[42vh] min-h-[330px] bg-cover bg-center transition-all duration-700"
       style={{
-        backgroundImage: `url('${slide.imageUrl}')`,
+        backgroundImage: `url('${backgroundImage}')`,
       }}
     >
       <div className="absolute inset-0 bg-black/50" />
 
-      <div className="relative z-10 h-full flex items-center">
-        <div className="max-w-7xl mx-auto w-full px-6">
+      <div className="relative z-10 flex h-full items-center">
+        <div className="mx-auto w-full max-w-7xl px-6">
           <div className="max-w-md text-white">
-            <h1 className="text-3xl lg:text-4xl font-bold leading-tight mb-3">
+            <h1 className="mb-3 text-3xl font-bold leading-tight lg:text-4xl">
               {truncateText(slide.title, 70)}
             </h1>
 
-            <div className="w-20 h-1 bg-yellow-500 rounded-full mb-3" />
+            <div className="mb-3 h-1 w-20 rounded-full bg-yellow-500" />
 
             {slide.description && (
-              <p className="text-sm lg:text-base leading-6 text-gray-100 mb-3">
+              <p className="mb-3 text-sm leading-6 text-gray-100 lg:text-base">
                 {truncateText(slide.description, 150)}
               </p>
             )}
 
             {slide.reference && (
-              <p className="text-yellow-400 font-medium text-sm mb-4">
+              <p className="mb-4 text-sm font-medium text-yellow-400">
                 — {truncateText(slide.reference, 40)}
               </p>
             )}
 
             <Link
               href="/about"
-              className="inline-block bg-green-800 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2 rounded-md transition"
+              className="inline-block rounded-md bg-green-800 px-5 py-2 text-sm font-semibold text-white transition hover:bg-green-700"
             >
               LEARN MORE ABOUT US →
             </Link>

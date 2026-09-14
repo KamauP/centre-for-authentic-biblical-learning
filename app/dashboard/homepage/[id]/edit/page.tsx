@@ -27,6 +27,7 @@ export default function EditHeroSlidePage() {
   const [existingImage, setExistingImage] = useState("");
   const [newImage, setNewImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [removeExistingImage, setRemoveExistingImage] = useState(false);
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -88,16 +89,23 @@ export default function EditHeroSlidePage() {
       return;
     }
 
-    // 5MB maximum
     if (selectedImage.size > 5 * 1024 * 1024) {
       setError("Image must be smaller than 5MB.");
       return;
     }
 
+    setRemoveExistingImage(false);
     setNewImage(selectedImage);
   }
 
   function removeNewImage() {
+    setNewImage(null);
+    setImagePreview(null);
+  }
+
+  function useDefaultImage() {
+    setRemoveExistingImage(true);
+    setExistingImage("");
     setNewImage(null);
     setImagePreview(null);
   }
@@ -120,9 +128,29 @@ export default function EditHeroSlidePage() {
       return;
     }
 
+    let uploadedNewImage = "";
+    let oldImage = existingImage;
+
     try {
-      let imageUrl = existingImage;
-      let uploadedNewImage = "";
+      /*
+       * Load the current Creation linked to this Hero Slide.
+       *
+       * New Hero Slides already have this relationship.
+       * Older Hero Slides may not, so we handle that case below.
+       */
+      const { data: existingCreation, error: creationLookupError } =
+        await supabase
+          .from("creations")
+          .select("id, image_url")
+          .eq("hero_slide_id", id)
+          .maybeSingle();
+
+      if (creationLookupError) {
+        throw creationLookupError;
+      }
+
+      // Determine the new image path
+      let imageUrl = removeExistingImage ? "" : existingImage;
 
       // Upload new image if one was selected
       if (newImage) {
@@ -151,41 +179,105 @@ export default function EditHeroSlidePage() {
         imageUrl = fileName;
       }
 
-      // Update database first
+      /*
+       * Update Hero Slide
+       */
       const { error: updateError } = await supabase
         .from("hero_slides")
         .update({
           title: title.trim(),
           description: description.trim() || null,
           reference: reference.trim() || null,
-          image_url: imageUrl,
+          image_url: imageUrl || null,
           display_order: Number(displayOrder),
           is_active: isActive,
         })
         .eq("id", id);
 
-      // If database update failed, clean up newly uploaded image
       if (updateError) {
-        if (uploadedNewImage) {
-          await supabase.storage
-            .from("hero-images")
-            .remove([uploadedNewImage]);
-        }
-
         throw updateError;
       }
 
-      // Database update succeeded, so now delete the old image
-      if (newImage && existingImage) {
-        const { error: deleteError } = await supabase.storage
-          .from("hero-images")
-          .remove([existingImage]);
+      /*
+       * Update the matching Creation.
+       *
+       * This keeps the permanent Creations Notebook version
+       * synchronized with the Homepage Hero version.
+       */
+      if (existingCreation) {
+        const { error: creationUpdateError } = await supabase
+          .from("creations")
+          .update({
+            title: title.trim(),
+            description: description.trim() || null,
+            reference: reference.trim() || null,
+            image_url: imageUrl || null,
+          })
+          .eq("id", existingCreation.id);
 
-        if (deleteError) {
-          console.error(
-            "Old image could not be deleted:",
-            deleteError
-          );
+        if (creationUpdateError) {
+          throw creationUpdateError;
+        }
+      } else {
+        /*
+         * If this is an older Hero Slide that was created before
+         * the automatic Hero → Creation system existed, create
+         * its permanent Notebook entry now.
+         */
+        const { error: creationInsertError } = await supabase
+          .from("creations")
+          .insert({
+            title: title.trim(),
+            description: description.trim() || null,
+            reference: reference.trim() || null,
+            image_url: imageUrl || null,
+            category: "Nature Teaches Us",
+            is_published: true,
+            hero_slide_id: id,
+          });
+
+        if (creationInsertError) {
+          throw creationInsertError;
+        }
+      }
+
+      /*
+       * The Hero and Creation have now both been updated.
+       *
+       * Only delete the old image if absolutely nothing else
+       * in the database is still using it.
+       */
+      if (oldImage && (newImage || removeExistingImage)) {
+        const { count: creationReferences } = await supabase
+          .from("creations")
+          .select("id", {
+            count: "exact",
+            head: true,
+          })
+          .eq("image_url", oldImage);
+
+        const { count: heroReferences } = await supabase
+          .from("hero_slides")
+          .select("id", {
+            count: "exact",
+            head: true,
+          })
+          .eq("image_url", oldImage);
+
+        const totalReferences =
+          (creationReferences || 0) + (heroReferences || 0);
+
+        if (totalReferences === 0) {
+          const { error: deleteError } = await supabase.storage
+            .from("hero-images")
+            .remove([oldImage]);
+
+          if (deleteError) {
+            console.error(
+              "Old image could not be deleted:",
+              deleteError
+            );
+          }
         }
       }
 
@@ -193,6 +285,35 @@ export default function EditHeroSlidePage() {
       router.refresh();
     } catch (error) {
       console.error(error);
+
+      /*
+       * If a new image was uploaded but something failed afterwards,
+       * remove the new image so we don't leave an unused file behind.
+       */
+      if (uploadedNewImage) {
+        await supabase.storage
+          .from("hero-images")
+          .remove([uploadedNewImage]);
+      }
+
+      /*
+       * Reload the Hero Slide from the database so the UI doesn't
+       * accidentally leave the user thinking the save succeeded.
+       */
+      const { data: currentSlide } = await supabase
+        .from("hero_slides")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (currentSlide) {
+        setTitle(currentSlide.title || "");
+        setDescription(currentSlide.description || "");
+        setReference(currentSlide.reference || "");
+        setDisplayOrder(String(currentSlide.display_order ?? 0));
+        setIsActive(currentSlide.is_active);
+        setExistingImage(currentSlide.image_url || "");
+      }
 
       setError(
         error instanceof Error
@@ -380,7 +501,8 @@ export default function EditHeroSlidePage() {
               </h2>
 
               <p className="mt-1 text-sm text-gray-500">
-                Keep the current image or replace it with a new one.
+                Optional. Keep the current image, replace it, or use the
+                default homepage image.
               </p>
             </div>
 
@@ -455,24 +577,35 @@ export default function EditHeroSlidePage() {
                 </div>
 
                 <div className="bg-white p-4">
-                  <label
-                    htmlFor="hero-image"
-                    className="inline-flex min-h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-green-200 px-4 py-3 text-sm font-semibold text-green-900 transition hover:bg-green-50 sm:w-auto"
-                  >
-                    <FaCloudUploadAlt size={14} />
-                    Replace Image
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <label
+                      htmlFor="hero-image"
+                      className="inline-flex min-h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-green-200 px-4 py-3 text-sm font-semibold text-green-900 transition hover:bg-green-50 sm:w-auto"
+                    >
+                      <FaCloudUploadAlt size={14} />
+                      Replace Image
 
-                    <input
-                      id="hero-image"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      className="hidden"
-                    />
-                  </label>
+                      <input
+                        id="hero-image"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="hidden"
+                      />
+                    </label>
+
+                    <button
+                      type="button"
+                      onClick={useDefaultImage}
+                      className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-xl border border-red-200 px-4 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-50 sm:w-auto"
+                    >
+                      <FaTimes size={12} />
+                      Use Default Image
+                    </button>
+                  </div>
 
                   <p className="mt-2 text-xs text-gray-500">
-                    Maximum image size: 5MB.
+                    Replace the image or use the default homepage hero image.
                   </p>
                 </div>
               </div>
@@ -490,7 +623,8 @@ export default function EditHeroSlidePage() {
                 </p>
 
                 <p className="mt-1 text-xs text-gray-500">
-                  JPG, PNG, WEBP or other image formats
+                  Optional — the default homepage image will be used if none
+                  is added.
                 </p>
 
                 <p className="mt-1 text-xs text-gray-400">
