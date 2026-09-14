@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import PageViewTracker from "@/components/analytics/PageViewTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,32 +54,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headerList = await headers();
-  const pathname = headerList.get("x-pathname") || "";
-
-  const isDashboard = pathname.startsWith("/dashboard");
-
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-amber-50">
-         {!isDashboard && <PageViewTracker />}
-
-        {!isDashboard && <Header />}
-
-        <main className="flex-1">
-          {children}
-        </main>
-
-        {!isDashboard && <Footer />}
+      <body className="min-h-full bg-amber-50">
+        {children}
       </body>
     </html>
   );
 }
+

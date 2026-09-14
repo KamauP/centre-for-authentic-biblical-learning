@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Hero from "../components/home/Hero";
-import Scripture from "../components/home/Scripture";
-import Pillars from "../components/home/Pillars";
-import Welcome from "../components/home/Welcome";
+import Hero from "../../components/home/Hero";
+import Scripture from "../../components/home/Scripture";
+import Pillars from "../../components/home/Pillars";
+import Welcome from "../../components/home/Welcome";
 import Features from "@/components/home/Features";
 import FeaturedCourses from "@/components/home/FeaturedCourses";
 import Community from "@/components/home/Community";

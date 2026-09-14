@@ -7,7 +7,7 @@ import {
   FaYoutube,
   FaWhatsapp,
   FaEnvelope,
-  FaRss,
+  FaUserCircle,
 } from "react-icons/fa";
 import { SiSubstack } from "react-icons/si";
 
@@ -24,48 +24,51 @@ export default function Header() {
 
           <div className="flex items-center gap-4 ml-auto">
 
-                  <a
-          href="https://www.facebook.com/share/1DVwxkTtDy/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-        >
-          <FaFacebookF className="hover:text-yellow-400 transition" />
-        </a>
+            <a
+              href="https://www.facebook.com/share/1DVwxkTtDy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF className="hover:text-yellow-400 transition" />
+            </a>
 
-      {/*<a
-          href="#"
-          aria-label="YouTube"
-        >
-          <FaYoutube className="hover:text-yellow-400 transition" />
-        </a>*/}
-        <a
-  href="https://substack.com/@cable905894?utm_source=share&utm_medium=android&r=8f70gp"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Substack"
->
-<SiSubstack className="hover:text-yellow-400 transition" />
-</a>
+            {/* YouTube */}
+            {/* 
+            <a
+              href="#"
+              aria-label="YouTube"
+            >
+              <FaYoutube className="hover:text-yellow-400 transition" />
+            </a>
+            */}
 
-        <a
-          href="https://whatsapp.com/channel/0029Vb84hadKWEL046VazN3j"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp"
-        >
-          <FaWhatsapp className="hover:text-yellow-400 transition" />
-        </a>
+            <a
+              href="https://substack.com/@cable905894?utm_source=share&utm_medium=android&r=8f70gp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Substack"
+            >
+              <SiSubstack className="hover:text-yellow-400 transition" />
+            </a>
 
-        <a
-          href="/contact"
-          aria-label="Contact Us"
-        >
-          <FaEnvelope className="hover:text-yellow-400 transition" />
-        </a>
+            <a
+              href="https://whatsapp.com/channel/0029Vb84hadKWEL046VazN3j"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp className="hover:text-yellow-400 transition" />
+            </a>
+
+            <a
+              href="/contact"
+              aria-label="Contact Us"
+            >
+              <FaEnvelope className="hover:text-yellow-400 transition" />
+            </a>
 
           </div>
-
         </div>
       </div>
 
@@ -118,10 +121,24 @@ export default function Header() {
             <NavLinks />
           </nav>
 
-          {/* Mobile Navigation */}
-          <div className="ml-auto">
+          {/* Dashboard + Mobile Navigation */}
+          <div className="ml-auto flex items-center gap-5">
+
+            {/* Admin Dashboard */}
+            <Link
+              href="/dashboard"
+              aria-label="Admin Dashboard"
+              title="Admin Dashboard"
+              className="flex items-center justify-center text-green-900 hover:text-yellow-500 transition"
+            >
+              <FaUserCircle size={20} />
+            </Link>
+
+            {/* Mobile Navigation */}
             <MobileMenu />
-         </div>
+
+          </div>
+
         </div>
 
       </header>
