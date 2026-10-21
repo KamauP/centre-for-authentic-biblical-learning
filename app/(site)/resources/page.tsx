@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import ArticlesHero from "@/components/articles/ArticlesHero";
 import FeaturedArticle from "@/components/articles/FeaturedArticle";
@@ -12,60 +13,52 @@ import ArticlesCTA from "@/components/articles/ArticlesCTA";
 export const metadata: Metadata = {
   title: "Biblical Resources & Articles | CABL",
   description:
-    "Explore biblical resources, articles, study series, and learning materials from the Center for Authentic Biblical Learning to deepen your understanding of God's Word.",
+    "Explore biblical resources, Christian articles, Bible study materials, and teachings from the Center for Authentic Biblical Learning.",
   keywords: [
     "biblical resources",
-    "Bible study resources",
     "Christian articles",
-    "Bible articles",
-    "biblical study materials",
     "Bible study",
-    "Christian learning",
-    "biblical learning",
-    "Center for Authentic Biblical Learning",
+    "Christian education",
+    "Bible teachings",
     "CABL",
   ],
 };
 
-export default function ArticlesPage() {
+type SearchParams = {
+  q?: string;
+  type?: string;
+  category?: string;
+};
+
+export default async function ArticlesPage({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const filters = await searchParams;
+
   return (
     <main className="min-h-screen bg-[#F5F0E4]">
-
-      {/* Hero */}
       <ArticlesHero />
 
-      {/* Main Content */}
       <section className="mx-auto max-w-7xl px-6 py-5">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[2.5fr_1fr]">
-
-          {/* LEFT COLUMN */}
           <div className="space-y-5">
-
             <FeaturedArticle />
-
-            <ResourceLibrary />
-
+            <ResourceLibrary searchParams={filters}/>
             <StudySeries />
-
             <RecentArticles />
-
           </div>
 
-          {/* RIGHT COLUMN */}
           <aside className="space-y-4">
-
-            <ResourceSearch />
-
+            <ResourceSearch searchParams={filters} />
             <StayConnected />
-
             <DownloadResources />
-
           </aside>
-
         </div>
       </section>
-      <ArticlesCTA />
 
+      <ArticlesCTA />
     </main>
   );
 }

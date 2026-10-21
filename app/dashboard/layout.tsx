@@ -41,8 +41,8 @@ const navigation = [
     icon: FaCalendarAlt,
   },
   {
-    name: "Resources",
-    href: "/dashboard/resources",
+    name: "Articles & Resources",
+    href: "/dashboard/articles",
     icon: FaFileAlt,
   },
   {
