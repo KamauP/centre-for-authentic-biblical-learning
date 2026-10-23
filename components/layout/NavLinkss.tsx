@@ -12,7 +12,7 @@ const links = [
   { name: "Teaching Gallery", href: "/gallery" },
   { name: "Articles & Resources", href: "/resources" },
   { name: "Events", href: "/events" },
-  { name: "Support the Ministry", href: "/support" },
+  { name: "Workplace Bible", href: "/support" },
   { name: "Contact Us", href: "/contact" },
 ];
 

@@ -5,7 +5,7 @@ export default function SupportHero() {
     <section className="relative h-[41vh] min-h-[300px] w-full overflow-hidden">
       {/* Background image */}
       <Image
-        src="/images/support/support-hero.jpg"
+        src="/images/support/Workplace-Bible.jpg"
         alt="Supporting the ministry"
         fill
         priority
@@ -20,10 +20,10 @@ export default function SupportHero() {
         <div className="max-w-2xl px-6 text-center text-white">
 
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-            Support
+            Workplace
             <br />
             <span className="text-[#E5A900]">
-              the Ministry
+              Bible
             </span>
           </h1>
 
@@ -31,11 +31,13 @@ export default function SupportHero() {
           <div className="mx-auto my-4 h-1 w-20 rounded-full bg-[#E5A900]" />
 
           <p className="mx-auto max-w-md text-sm leading-6 text-gray-100 md:text-base">
-            Together we are building a generation
+            Focused  on studying
             <br />
-            established in the authentic knowledge
+            bible in  the middle        
             <br />
-            of God&apos;s Word.
+            <span className="text-[#E5A900]">
+            Colossians 3:17
+            </span>
           </p>
 
         </div>
